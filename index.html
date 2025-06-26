@@ -1,353 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ModernShop - Premium E-commerce Store</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-spinner">
-            <div class="spinner"></div>
-            <p>Loading ModernShop...</p>
-        </div>
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading ModernShop...</p>
+      </div>
     </div>
 
     <!-- Header -->
     <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <h2>ModernShop</h2>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#products" class="nav-link">Products</a></li>
-                    <li><a href="#deals" class="nav-link">Deals</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="nav-icons">
-                    <button class="search-btn" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
-                    <button class="wishlist-btn" onclick="toggleWishlist()">
-                        <i class="fas fa-heart"></i>
-                        <span class="wishlist-count">0</span>
-                    </button>
-                    <button class="cart-btn" onclick="toggleCart()">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
-                    </button>
-                    <button class="user-btn" onclick="toggleUserMenu()">
-                        <i class="fas fa-user"></i>
-                    </button>
-                    <button class="menu-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Search Bar -->
-        <div class="search-overlay" id="searchOverlay">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search products..." class="search-input">
-                <button class="search-close" onclick="toggleSearch()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="search-results" id="searchResults"></div>
+      <nav class="nav">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <h2>ModernShop</h2>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#products" class="nav-link">Products</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="nav-icons">
+            <button class="search-btn" onclick="toggleSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+            <button class="wishlist-btn" onclick="toggleWishlist()">
+              <i class="fas fa-heart"></i>
+              <span class="wishlist-count">0</span>
+            </button>
+            <button class="cart-btn" onclick="toggleCart()">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span>
+            </button>
+            <button class="user-btn" onclick="toggleUserMenu()">
+              <i class="fas fa-user"></i>
+            </button>
+            <button class="menu-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
+      </nav>
 
-        <!-- User Menu -->
-        <div class="user-menu" id="userMenu">
-            <div class="user-menu-content">
-                <div class="user-info" id="userInfo">
-                    <button onclick="showAuthModal('login')" class="auth-btn">Login</button>
-                    <button onclick="showAuthModal('signup')" class="auth-btn">Sign Up</button>
-                </div>
-                <div class="user-links" id="userLinks" style="display: none;">
-                    <a href="#" onclick="showOrderHistory()"><i class="fas fa-history"></i> Order History</a>
-                    <a href="#" onclick="showProfile()"><i class="fas fa-user-edit"></i> Profile</a>
-                    <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                </div>
-            </div>
+      <!-- Search Bar -->
+      <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products..."
+            class="search-input"
+          />
+          <button class="search-close" onclick="toggleSearch()">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+
+      <!-- User Menu -->
+      <div class="user-menu" id="userMenu">
+        <div class="user-menu-content">
+          <div class="user-info" id="userInfo">
+            <button onclick="showAuthModal('login')" class="auth-btn">
+              Login
+            </button>
+            <button onclick="showAuthModal('signup')" class="auth-btn">
+              Sign Up
+            </button>
+          </div>
+          <div class="user-links" id="userLinks" style="display: none">
+            <a href="#" onclick="showOrderHistory()"
+              ><i class="fas fa-history"></i> Order History</a
+            >
+            <a href="#" onclick="showProfile()"
+              ><i class="fas fa-user-edit"></i> Profile</a
+            >
+            <a href="#" onclick="logout()"
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </div>
+        </div>
+      </div>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Discover Premium Products</h1>
-                <p class="hero-subtitle">Elevate your lifestyle with our curated collection of premium items</p>
-                <button class="cta-btn" onclick="scrollToProducts()">Shop Now</button>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">10K+</span>
-                        <span class="stat-label">Happy Customers</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Products</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support</span>
-                    </div>
-                </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Discover Premium Products</h1>
+          <p class="hero-subtitle">
+            Elevate your lifestyle with our curated collection of premium items
+          </p>
+          <button class="cta-btn" onclick="scrollToProducts()">Shop Now</button>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">Happy Customers</span>
             </div>
-            <div class="hero-image">
-                <div class="floating-card">
-                    <img src="https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg" alt="Featured Product">
-                    <div class="product-badge">New Arrival</div>
-                </div>
+            <div class="stat">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Products</span>
             </div>
+            <div class="stat">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
         </div>
+        <div class="hero-image">
+          <div class="floating-card">
+            <img
+              src="https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg"
+              alt="Featured Product"
+            />
+            <div class="product-badge">New Arrival</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Promotional Banner -->
     <section class="promo-banner">
-        <div class="promo-content">
-            <i class="fas fa-fire"></i>
-            <span>Limited Time Offer: Get 20% off on all electronics! Use code: TECH20</span>
-            <button class="promo-btn">Shop Now</button>
-        </div>
+      <div class="promo-content">
+        <i class="fas fa-fire"></i>
+        <span
+          >Limited Time Offer: Get 20% off on all electronics! Use code:
+          TECH20</span
+        >
+        <button class="promo-btn">Shop Now</button>
+      </div>
     </section>
 
     <!-- Categories Section -->
     <section class="categories-section">
-        <div class="container">
-            <h2 class="section-title">Shop by Category</h2>
-            <div class="categories-grid" id="categoriesGrid">
-                <!-- Categories will be loaded here -->
-            </div>
+      <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="categories-grid" id="categoriesGrid">
+          <!-- Categories will be loaded here -->
         </div>
+      </div>
     </section>
 
     <!-- Products Section -->
     <section id="products" class="products-section">
-        <div class="container">
-            <div class="products-header">
-                <h2 class="section-title">Featured Products</h2>
-                <div class="products-controls">
-                    <div class="filter-controls">
-                        <select id="categoryFilter" class="filter-select">
-                            <option value="">All Categories</option>
-                        </select>
-                        <select id="priceFilter" class="filter-select">
-                            <option value="">All Prices</option>
-                            <option value="0-50">$0 - $50</option>
-                            <option value="50-100">$50 - $100</option>
-                            <option value="100-200">$100 - $200</option>
-                            <option value="200+">$200+</option>
-                        </select>
-                        <select id="sortFilter" class="filter-select">
-                            <option value="">Sort By</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                            <option value="name">Name A-Z</option>
-                            <option value="rating">Highest Rated</option>
-                        </select>
-                    </div>
-                    <div class="view-controls">
-                        <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
-                        <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="products-header">
+          <h2 class="section-title">Featured Products</h2>
+          <div class="products-controls">
+            <div class="filter-controls">
+              <select id="categoryFilter" class="filter-select">
+                <option value="">All Categories</option>
+              </select>
+              <select id="priceFilter" class="filter-select">
+                <option value="">All Prices</option>
+                <option value="0-50">$0 - $50</option>
+                <option value="50-100">$50 - $100</option>
+                <option value="100-200">$100 - $200</option>
+                <option value="200+">$200+</option>
+              </select>
+              <select id="sortFilter" class="filter-select">
+                <option value="">Sort By</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name">Name A-Z</option>
+                <option value="rating">Highest Rated</option>
+              </select>
             </div>
-            <div class="products-grid" id="productsGrid">
-                <!-- Products will be dynamically loaded here -->
+            <div class="view-controls">
+              <button class="view-btn active" data-view="grid">
+                <i class="fas fa-th"></i>
+              </button>
+              <button class="view-btn" data-view="list">
+                <i class="fas fa-list"></i>
+              </button>
             </div>
-            <div class="load-more-container">
-                <button class="load-more-btn" id="loadMoreBtn">Load More Products</button>
-            </div>
+          </div>
         </div>
+        <div class="products-grid" id="productsGrid">
+          <!-- Products will be dynamically loaded here -->
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" id="loadMoreBtn">
+            Load More Products
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Recently Viewed -->
-    <section class="recently-viewed" id="recentlyViewed" style="display: none;">
-        <div class="container">
-            <h3>Recently Viewed</h3>
-            <div class="recently-viewed-grid" id="recentlyViewedGrid"></div>
-        </div>
+    <section class="recently-viewed" id="recentlyViewed" style="display: none">
+      <div class="container">
+        <h3>Recently Viewed</h3>
+        <div class="recently-viewed-grid" id="recentlyViewedGrid"></div>
+      </div>
     </section>
 
     <!-- Shopping Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>Shopping Cart</h3>
-            <button class="close-cart" onclick="toggleCart()">
-                <i class="fas fa-times"></i>
-            </button>
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart" onclick="toggleCart()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Your cart is empty</p>
         </div>
-        <div class="cart-items" id="cartItems">
-            <div class="empty-cart">
-                <i class="fas fa-shopping-cart"></i>
-                <p>Your cart is empty</p>
-            </div>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-summary">
+          <div class="cart-subtotal">
+            <span>Subtotal: $<span id="cartSubtotal">0.00</span></span>
+          </div>
+          <div class="cart-shipping">
+            <span>Shipping: $<span id="cartShipping">0.00</span></span>
+          </div>
+          <div class="cart-total">
+            <span>Total: $<span id="cartTotal">0.00</span></span>
+          </div>
         </div>
-        <div class="cart-footer">
-            <div class="cart-summary">
-                <div class="cart-subtotal">
-                    <span>Subtotal: $<span id="cartSubtotal">0.00</span></span>
-                </div>
-                <div class="cart-shipping">
-                    <span>Shipping: $<span id="cartShipping">0.00</span></span>
-                </div>
-                <div class="cart-total">
-                    <span>Total: $<span id="cartTotal">0.00</span></span>
-                </div>
-            </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
-        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+      </div>
     </div>
 
     <!-- Wishlist Sidebar -->
     <div class="wishlist-sidebar" id="wishlistSidebar">
-        <div class="wishlist-header">
-            <h3>Wishlist</h3>
-            <button class="close-wishlist" onclick="toggleWishlist()">
-                <i class="fas fa-times"></i>
-            </button>
+      <div class="wishlist-header">
+        <h3>Wishlist</h3>
+        <button class="close-wishlist" onclick="toggleWishlist()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="wishlist-items" id="wishlistItems">
+        <div class="empty-wishlist">
+          <i class="fas fa-heart"></i>
+          <p>Your wishlist is empty</p>
         </div>
-        <div class="wishlist-items" id="wishlistItems">
-            <div class="empty-wishlist">
-                <i class="fas fa-heart"></i>
-                <p>Your wishlist is empty</p>
-            </div>
-        </div>
+      </div>
     </div>
 
     <!-- Product Modal -->
     <div class="modal-overlay" id="productModal">
-        <div class="modal-content product-modal">
-            <button class="modal-close" onclick="closeProductModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-body" id="productModalBody">
-                <!-- Product details will be loaded here -->
-            </div>
+      <div class="modal-content product-modal">
+        <button class="modal-close" onclick="closeProductModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-body" id="productModalBody">
+          <!-- Product details will be loaded here -->
         </div>
+      </div>
     </div>
 
     <!-- Auth Modal -->
     <div class="modal-overlay" id="authModal">
-        <div class="modal-content auth-modal">
-            <button class="modal-close" onclick="closeAuthModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-forms">
-                <!-- Login Form -->
-                <form class="auth-form" id="loginForm">
-                    <h3>Login to Your Account</h3>
-                    <div class="form-group">
-                        <input type="email" id="loginEmail" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="loginPassword" placeholder="Password" required>
-                    </div>
-                    <button type="submit" class="auth-submit-btn">Login</button>
-                    <p class="auth-switch">Don't have an account? <a href="#" onclick="switchAuthForm('signup')">Sign up</a></p>
-                </form>
-
-                <!-- Signup Form -->
-                <form class="auth-form" id="signupForm" style="display: none;">
-                    <h3>Create New Account</h3>
-                    <div class="form-group">
-                        <input type="text" id="signupName" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="signupEmail" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="signupPassword" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
-                    </div>
-                    <button type="submit" class="auth-submit-btn">Sign Up</button>
-                    <p class="auth-switch">Already have an account? <a href="#" onclick="switchAuthForm('login')">Login</a></p>
-                </form>
+      <div class="modal-content auth-modal">
+        <button class="modal-close" onclick="closeAuthModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="auth-forms">
+          <!-- Login Form -->
+          <form class="auth-form" id="loginForm">
+            <h3>Login to Your Account</h3>
+            <div class="form-group">
+              <input
+                type="email"
+                id="loginEmail"
+                placeholder="Email"
+                required
+              />
             </div>
+            <div class="form-group">
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit" class="auth-submit-btn">Login</button>
+            <p class="auth-switch">
+              Don't have an account?
+              <a href="#" onclick="switchAuthForm('signup')">Sign up</a>
+            </p>
+          </form>
+
+          <!-- Signup Form -->
+          <form class="auth-form" id="signupForm" style="display: none">
+            <h3>Create New Account</h3>
+            <div class="form-group">
+              <input
+                type="text"
+                id="signupName"
+                placeholder="Full Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="signupEmail"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                id="signupPassword"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                id="signupConfirmPassword"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+            <button type="submit" class="auth-submit-btn">Sign Up</button>
+            <p class="auth-switch">
+              Already have an account?
+              <a href="#" onclick="switchAuthForm('login')">Login</a>
+            </p>
+          </form>
         </div>
+      </div>
     </div>
 
     <!-- Overlays -->
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <div class="wishlist-overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+    <div
+      class="wishlist-overlay"
+      id="wishlistOverlay"
+      onclick="toggleWishlist()"
+    ></div>
 
     <!-- Notification Toast -->
     <div class="toast" id="toast">
-        <div class="toast-content">
-            <i class="toast-icon"></i>
-            <span class="toast-message"></span>
-        </div>
+      <div class="toast-content">
+        <i class="toast-icon"></i>
+        <span class="toast-message"></span>
+      </div>
     </div>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2 class="section-title">About us</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              At <strong>ModernShop</strong>, we believe shopping should be
+              simple, stylish, and satisfying. Since our launch, we've been
+              committed to delivering a seamless online shopping experience that
+              combines premium products, unbeatable value, and top-tier customer
+              support.
+            </p>
+            <p>
+              Our curated collections include everything from everyday
+              essentials to exclusive luxury items. Whether you're looking for
+              the latest tech gadgets, fashionable wearables, or unique
+              lifestyle products — we've got it all.
+            </p>
+            <p>
+              We’re proud to have served
+              <strong>10,000+ happy customers</strong> and continue to grow
+              through your trust and support.
+            </p>
+            <p>
+              Thank you for choosing ModernShop — where quality meets
+              convenience.
+            </p>
+          </div>
+          <div class="about-image">
+            <img
+              src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg"
+              alt="About ModernShop"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ModernShop</h3>
-                    <p>Your premium destination for quality products and exceptional service.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#deals">Deals</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">Track Your Order</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Newsletter</h4>
-                    <p>Subscribe for updates and exclusive offers</p>
-                    <div class="newsletter">
-                        <input type="email" placeholder="Enter your email" id="newsletterEmail">
-                        <button onclick="subscribeNewsletter()">Subscribe</button>
-                    </div>
-                    <div class="payment-methods">
-                        <h5>We Accept</h5>
-                        <div class="payment-icons">
-                            <i class="fab fa-cc-visa"></i>
-                            <i class="fab fa-cc-mastercard"></i>
-                            <i class="fab fa-cc-paypal"></i>
-                            <i class="fab fa-cc-apple-pay"></i>
-                        </div>
-                    </div>
-                </div>
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>ModernShop</h3>
+            <p>
+              Your premium destination for quality products and exceptional
+              service.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ModernShop. All rights reserved. By <b>MD</b></p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#deals">Deals</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Customer Service</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Size Guide</a></li>
+              <li><a href="#">Track Your Order</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Newsletter</h4>
+            <p>Subscribe for updates and exclusive offers</p>
+            <div class="newsletter">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                id="newsletterEmail"
+              />
+              <button onclick="subscribeNewsletter()">Subscribe</button>
             </div>
+            <div class="payment-methods">
+              <h5>We Accept</h5>
+              <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-apple-pay"></i>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 ModernShop. All rights reserved. By <b>MD</b></p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
